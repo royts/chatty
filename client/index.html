@@ -1,25 +1,13 @@
 <!doctype html>
-<html ng-app="app">
+<html ng-app="chatty">
 <head>
   <meta charset="utf-8">
   <title>NodeJS Skeleton</title>
   <link href="style/style.css" rel="stylesheet">
 </head>
-<body ng-controller="appController">
+<body>
 <div class="container">
-  <!--<div class="funny-stuff">-->
-  <!--<span>-->
-  <!--Question: {{funnyStuff.question}}-->
-  <!--</span>-->
-  <!--</div>-->
-  <!--<div class="funny-stuff">-->
-  <!--<span>-->
-  <!--Answer: {{funnyStuff.answer}}-->
-  <!--</span>-->
-  <!--</div>-->
-
-
-  <div class='chat'>
+  <div class='chat'  ng-controller="ChatCtrl">
     <header>
       <h2 class='title'>
         <a href='http://github.com/royts/chatty'>Chatty</a>
@@ -28,19 +16,21 @@
     <div class='body'>
       <ul>
         <li>
-          <a class='thumbnail' href='#'>
-            NR
-          </a>
+          <div class="message-container">
+            <a class='thumbnail' href='#'>
+              NR
+            </a>
 
-          <div class='content'>
-            <h3>Nick Roach</h3>
-            <span class='preview'>hey how are things going on the...</span>
+            <div class='content'>
+              <h3>Nick Roach</h3>
+              <span class='preview'>hey how are things going on the...</span>
           <span class='meta'>
             2h ago <!--&middot;-->
            <!--<a href='#'>Category</a>-->
             <!--&middot;-->
             <!--<a href='#'>Reply</a>-->
           </span>
+            </div>
           </div>
         </li>
         <li>
@@ -302,12 +292,19 @@
       </ul>
     </div>
     <footer>
-      <a href='#'>Go up</a>
     </footer>
+    <div class="message-input-container">
+      <form ng-submit="sendMessage()">
+        <input class="textarea message-input" ng-model="message"
+               type="text" placeholder="Type here!"/>
+      </form>
+    </div>
   </div>
 </div>
 
-<script src="js/lib/angular.min.js"></script>
-<script src="js/app.js"></script>
+<script src="js/lib/angular/angular.js"></script>
+<script src="js/lib/socket.io-client/socket.io.js"></script>
+<script src="js/lib/angular-socket-io/socket.js"></script>
+<script src="dist/chatty.js"></script>
 </body>
 </html>

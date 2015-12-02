@@ -1,7 +1,7 @@
-// App
-var app = angular.module('app', []);
+var app = angular.module('chatty', [
+  'btford.socket-io'
+]);
 
-// Service to fetch some data..
 app.factory('dataServ', ['$http', function ($http) {
   return {
     get: function () {
@@ -10,7 +10,6 @@ app.factory('dataServ', ['$http', function ($http) {
   };
 }]);
 
-// App controller
 app.controller('appController', ['$scope', 'dataServ', function ($scope, Data) {
 
   $scope.funnyStuff = {question: '', answer: ''};
