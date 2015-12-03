@@ -1,23 +1,17 @@
-# Skeleton app with Node.js + express + angular
+# Chatty
 
-## Requirements
+## Run
+1. `npm install`
+2. `bower install`
+3. `gulp release`
+4. Load the url: `http://localhost:3000/app`
 
-- [Node and npm](http://nodejs.org)
 
-## Installation
+## test
+`gulp lint`
 
-1. `git clone git@github.com:forter/node-skeleton.git`
-2. `cd node-skeleton`
-3. `npm install`
-3. `node app.js`
-4. Go to `http://localhost:3000`
-5. Enjoy life.
-
-## Usage
-
-Add routes to server in: `server/routes.js`
-
-Main angular module: `client/app.js`
-
-Main html file: `client/index.html`
+## Have fun
+1. call `bot` to get full info about what it can do
+2. Talk to `bot`
+3. win!
 
