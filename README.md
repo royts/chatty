@@ -7,7 +7,7 @@
 4. Load the url: `http://localhost:3000/app`
 
 
-## test
+## Test
 `gulp lint`
 
 ## Have fun

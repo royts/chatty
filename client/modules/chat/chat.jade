@@ -13,4 +13,4 @@ footer
 .message-input-container
 form(ng-submit='chat.sendMessage()')
   input.textarea.message-input.send-message(ng-model='chat.message', type='text', placeholder='Type here!',
-    focus-on="newMessageAdded" )
+    focus-on="chat.focusInput" )

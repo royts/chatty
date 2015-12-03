@@ -30,10 +30,12 @@ function newMessage(msg) {
       });
     } else {
 
-      var a = question.getPreviousAnswer(cleanQuestion);
-      console.log("-->bot answer: ", a);
+      var answer = question.getPreviousAnswer(cleanQuestion);
 
-      deferred.resolve(a);
+      if(answer){
+        answer = "* I think I can answer that! *     " + answer;
+      }
+      deferred.resolve(answer);
     }
 
   } else{

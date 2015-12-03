@@ -1,14 +1,16 @@
-app.directive('focusOn', function() {
-  return function(scope, elem, attr) {
-    scope.$on('focusOn', function(e, name) {
-
-
-      if(name === attr.focusOn) {
-        console.log("focusing in: " ,  elem[0]);
-        elem[0].focus();
-        //elem[0].blur();
-
-      }
-    });
+app.directive('focusOn', function($timeout) {
+  return {
+    scope: { trigger: '=focusOn' },
+    link: function(scope, element) {
+      scope.$watch('trigger', function(value) {
+        if(value === true) {
+          console.log('trigger',value);
+          $timeout(function() {
+          element[0].focus();
+          scope.trigger = false;
+          });
+        }
+      });
+    }
   };
 });

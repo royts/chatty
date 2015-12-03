@@ -15,13 +15,11 @@ module.exports = {
       return _.intersection(answer.q.split(' '), questionWords).length >= 2;
     });
 
-    if(!found){
+    if (!found || found.length === 0) {
       return "";
     }
-    console.log("--> found: " , found);
-    
 
-    return found.a;
+    return found[0].a;
   },
 
   learn: function (q) {
