@@ -17,7 +17,7 @@ var app = angular.module('chatty', [
       .state('chat', {
         url: "/chat",
         templateUrl: "modules/chat/chat.html",
-        controller: 'chatCtrl',
+        controller: 'chatCtrl as chat',
         onEnter: function (userService, $state, $timeout) {
           if (!userService.name) {
             $timeout(function () {
