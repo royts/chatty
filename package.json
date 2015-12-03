@@ -6,7 +6,11 @@
   "author": "roy",
   "dependencies": {
     "express": "~4.6.1",
-    "socket.io": "^1.3.7"
+    "q": "^1.4.1",
+    "request": "^2.67.0",
+    "socket.io": "^1.3.7",
+    "string": "^3.3.1",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "gulp": "^3.9.0",

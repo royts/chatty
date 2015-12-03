@@ -1,6 +1,6 @@
 angular.module('chatty')
   .controller('chatCtrl',
-  function ($scope, socketService, userService, $location, $anchorScroll) {
+  function ($scope, socketService, userService, $location, $anchorScroll, focusService) {
     function sendMessage(from, msg) {
       socketService.socket.emit(socketService.emitEventName, from, msg);
     }
@@ -34,5 +34,6 @@ angular.module('chatty')
     this.sendMessage = function () {
       sendMessage(userService.name, this.message);
       this.message = '';
+      focusService('newMessageAdded');
     };
   });

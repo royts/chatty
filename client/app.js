@@ -1,7 +1,8 @@
 var app = angular.module('chatty', [
-  'chatty.templates',
   'btford.socket-io',
-  'ui.router'
+  'ui.router',
+  'ngAnimate',
+  'chatty.templates'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 

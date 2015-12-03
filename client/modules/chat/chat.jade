@@ -1,6 +1,6 @@
 div.body#chatBody
   ul
-    li(ng-repeat="message in chat.messages")
+    li(ng-repeat="message in chat.messages",ng-animate="'animate'")
       .message-container(id="{{message.id}}")
         a.thumbnail(href='#')
           div(ng-bind="message.acronyms")
@@ -12,4 +12,5 @@ div.body#chatBody
 footer
 .message-input-container
 form(ng-submit='chat.sendMessage()')
-  input.textarea.message-input.send-message(ng-model='chat.message', type='text', placeholder='Type here!')
+  input.textarea.message-input.send-message(ng-model='chat.message', type='text', placeholder='Type here!',
+    focus-on="newMessageAdded" )

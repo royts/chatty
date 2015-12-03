@@ -1,3 +1,5 @@
+var bot = require('./bot');
+
 module.exports = function (io) {
 
   console.log('socket.io: waiting for broadcasts');
@@ -13,9 +15,21 @@ module.exports = function (io) {
 
       console.log('payload is', msg);
 
-      io.sockets.emit('broadcast', {
+      var message = {
         message: msg,
         from: from
+      };
+
+      io.sockets.emit('broadcast', message);
+
+      bot.newMessage(message).then(function (answer) {
+
+        if (answer) {
+          io.sockets.emit('broadcast', {
+            message: answer,
+            from: 'bot'
+          });
+        }
       });
 
       console.log('broadcast complete');
