@@ -1,12 +1,16 @@
 var _ = require('underscore');
 
+var waitingForAnswer = null;
 var answered = [];
 
 function isQuestion(q) {
   return q.indexOf('?') > -1;
 }
 
-var waitingForAnswer = null;
+function reset() {
+  waitingForAnswer = null;
+}
+
 
 module.exports = {
   getPreviousAnswer: function (question) {
@@ -24,18 +28,18 @@ module.exports = {
 
   learn: function (q) {
 
-    if (!isQuestion(q)) {
-
-      if (waitingForAnswer) {
-        answered.push({
-          q: waitingForAnswer,
-          a: q
-        });
-        waitingForAnswer = null;
-      }
+    if (isQuestion(q)) {
+      waitingForAnswer = q;
       return;
     }
 
-    waitingForAnswer = q;
-  }
+    if (waitingForAnswer) {
+      answered.push({
+        q: waitingForAnswer,
+        a: q
+      });
+      reset();
+    }
+  },
+  reset: reset
 }

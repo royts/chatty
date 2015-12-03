@@ -21,6 +21,8 @@ function newMessage(msg) {
 
   if (isBotQuestion(message)) {
 
+    question.reset();
+
     var cleanQuestion = s(message).chompLeft('bot').trim();
 
     if (askForChuckFact(cleanQuestion)) {
