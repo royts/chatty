@@ -1,12 +1,18 @@
-module.exports = function(app) {
+var p = require('path');
+module.exports = function (app, express) {
 
-	app.get('/', function(req, res) {
-		res.sendfile('./public/index.html');
-	});
+  app.use(express.static(
+    p.join(__dirname, '..', 'client')
+  ));
 
-	var funnyStuff = {question: 'Why did the chicken cross the road?', answer: 'To get to the other side'};
+  app.get('/app*', function (req, res) {
+    res.sendfile(p.join(__dirname, '..', 'client/index.html')
+    );
+  });
 
-	app.get('/data', function(req, res) {
-		res.json(funnyStuff);
-	});
+  var funnyStuff = {question: 'Why did the chicken cross the road?', answer: 'To get to the other side'};
+
+  app.get('/data', function (req, res) {
+    res.json(funnyStuff);
+  });
 };

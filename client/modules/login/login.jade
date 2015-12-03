@@ -1,0 +1,4 @@
+.login
+  form.login-form(ng-submit='login.login()', name="loginForm")
+    input#userName.textarea.message-input.login-input(ng-model='login.name', name="userName" type='text', placeholder='Your name', required)
+    button.btn(ng-disabled="loginForm.$invalid", type="submit") Log in
