@@ -17,8 +17,17 @@ angular.module('chatty')
 
       var randomId = Math.random().toString(36).slice(2);
 
+      function generateAcronyms(from) {
+        var nameWords = data.from.split(' ');
+        if (nameWords.length > 1) {
+          return nameWords[0].charAt(0).toUpperCase() + nameWords[1].charAt(0).toUpperCase();
+        }
+        return data.from.charAt(0).toUpperCase() + data.from.charAt(data.from.length - 1).toUpperCase();
+      }
+
       this.messages.push({
-        acronyms: data.from.charAt(0).toUpperCase() + data.from.charAt(data.from.length - 1).toUpperCase(),
+
+        acronyms: generateAcronyms(data.from),
         name: data.from,
         message: data.message,
         id: randomId
