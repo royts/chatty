@@ -8,6 +8,15 @@ angular.module('chatty')
     this.messages = [];
     this.myName = userService.name;
 
+    function generateAcronyms(from) {
+      var nameWords = from.split(' ');
+      if (nameWords.length > 1) {
+        return nameWords[0].charAt(0).toUpperCase() + nameWords[1].charAt(0).toUpperCase();
+      }
+      return from.charAt(0).toUpperCase() + from.charAt(from.length - 1).toUpperCase();
+    }
+
+
     $scope.$on(socketService.forwardedEventName, function (event, data) {
       if (!data.message) {
         console.log.error('invalid message.', 'event:', event,
@@ -16,14 +25,6 @@ angular.module('chatty')
       }
 
       var randomId = Math.random().toString(36).slice(2);
-
-      function generateAcronyms(from) {
-        var nameWords = data.from.split(' ');
-        if (nameWords.length > 1) {
-          return nameWords[0].charAt(0).toUpperCase() + nameWords[1].charAt(0).toUpperCase();
-        }
-        return data.from.charAt(0).toUpperCase() + data.from.charAt(data.from.length - 1).toUpperCase();
-      }
 
       this.messages.push({
 
