@@ -2,6 +2,10 @@
   "name": "chatty",
   "version": "1.0.0",
   "description": "",
+  "repository" :
+  { "type" : "git"
+  , "url" : "https://github.com/royts/chatty.git"
+  }
   "main": "app.js",
   "author": "roy",
   "dependencies": {
