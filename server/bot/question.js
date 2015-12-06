@@ -13,15 +13,18 @@ function reset() {
 }
 
 function cleanQuestion(question){
-  return s(question).replaceAll("what","")
+  return s(question)
+    .replaceAll("?","")
+    .replaceAll("what","")
     .replaceAll("where", "")
     .replaceAll("when", "")
     .replaceAll("how", "")
-    .toLowerCase();
+    .toLowerCase().toString();
 }
 
 module.exports = {
   getPreviousAnswer: function (question) {
+
     question = cleanQuestion(question);
 
     var questionWords = question.split(' ');
@@ -38,17 +41,15 @@ module.exports = {
 
   learn: function (question) {
 
-    question = cleanQuestion(question);
-
     if (isQuestion(question)) {
-      waitingForAnswer = question;
+      waitingForAnswer = cleanQuestion(question);
       return;
     }
 
     if (waitingForAnswer) {
       answered.push({
         q: waitingForAnswer,
-        a: question
+        a: cleanQuestion(question)
       });
       reset();
     }

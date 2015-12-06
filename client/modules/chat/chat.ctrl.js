@@ -16,10 +16,12 @@ angular.module('chatty')
       return from.charAt(0).toUpperCase() + from.charAt(from.length - 1).toUpperCase();
     }
 
+    socketService.socket.emit('login', 'roy', 'hi');
+
 
     $scope.$on(socketService.forwardedEventName, function (event, data) {
       if (!data.message) {
-        console.log.error('invalid message.', 'event:', event,
+        console.log('invalid message.', 'event:', event,
           ' , data:', JSON.stringify(data));
         return;
       }

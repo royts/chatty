@@ -293,6 +293,14 @@ body, .message-input-container {
   opacity: .65;
 }
 
+.answer-title {
+  display: block;
+  font-weight: bold;
+  color: #032d43;
+  font-size: 90%;
+  font-family: 'Courier New';
+  margin-bottom: 10px;
+}
 
 /* ng-animate */
 
@@ -323,4 +331,16 @@ body, .message-input-container {
   opacity: 1;
   width: 150px;
   height: 30px;
+}
+
+li {
+  opacity: 1;
+}
+li.ng-enter {
+  -webkit-transition: 1s;
+  transition: 1s;
+  opacity: 0;
+}
+li.ng-enter-active {
+  opacity: 1;
 }

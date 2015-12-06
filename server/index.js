@@ -8,7 +8,7 @@ io = socketIo.listen(server);
 
 
 require('./routes.js')(app, express);
-require('./sockets.js')(io);
+require('./bot/sockets.js')(io);
 
 server.listen(3000);
 

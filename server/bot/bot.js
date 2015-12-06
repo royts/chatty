@@ -2,7 +2,7 @@ var s = require('string'),
 chuck = require('./chuck'),
 question = require('./question'),
 Q = require('q'),
-util = require('util');
+format = require('./format');
 
 function askForChuckFact(message) {
   return s(message.toLowerCase()).contains("chuck") ||
@@ -14,16 +14,12 @@ function isBotQuestion(message) {
   return s(message).startsWith('bot');
 }
 
-function formatBotResponse(title, answer) {
-  util.format('<span class="answer-title">%s</span><span class="answer-body">%s</span>', title, answer);
-}
-
 function formatBotAnswer(answer) {
-  return formatBotResponse("I think I know the answer to this question:", answer);
+  return format.formatBotResponse("I think I know the answer to this question:", answer);
 }
 
 function formatChuckAnswer(answer) {
-  return formatBotResponse("Here is a Chuck Norris fact:", answer);
+  return format.formatBotResponse("Here is a Chuck Norris fact:", answer);
 }
 
 
@@ -37,18 +33,16 @@ function newMessage(msg) {
 
     question.reset();
 
-    var cleanQuestion = s(message).chompLeft('bot').trim();
+    var cleanQuestion = s(message).chompLeft('bot').trim().toString();
 
     if (askForChuckFact(cleanQuestion)) {
 
       chuck.getFact().then(function (fact) {
-        formatChuckAnswer(fact);
+        deferred.resolve(formatChuckAnswer(fact));
       });
+
     } else {
-
-      var answer = formatBotAnswer(question.getPreviousAnswer(cleanQuestion));
-
-      deferred.resolve(answer);
+      deferred.resolve(formatBotAnswer(question.getPreviousAnswer(cleanQuestion)));
     }
 
   } else {

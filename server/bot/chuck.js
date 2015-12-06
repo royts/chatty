@@ -9,9 +9,6 @@ module.exports = {
       if (error || response.statusCode !== 200) {
         deferred.resolve("");
       }
-
-      console.log("got chuck fact: " + body);
-
       deferred.resolve(JSON.parse(body).value.joke);
     });
 
