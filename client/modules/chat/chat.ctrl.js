@@ -44,6 +44,5 @@ angular.module('chatty')
     this.sendMessage = function () {
       sendMessage(userService.name, this.message);
       this.message = '';
-      this.focusInput = true;
     };
   });
