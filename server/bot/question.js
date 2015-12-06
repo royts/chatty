@@ -1,4 +1,5 @@
-var _ = require('underscore');
+var _ = require('underscore'),
+s = require('string');
 
 var waitingForAnswer = null;
 var answered = [];
@@ -11,9 +12,18 @@ function reset() {
   waitingForAnswer = null;
 }
 
+function cleanQuestion(question){
+  return s(question).replaceAll("what","")
+    .replaceAll("where", "")
+    .replaceAll("when", "")
+    .replaceAll("how", "")
+    .toLowerCase();
+}
 
 module.exports = {
   getPreviousAnswer: function (question) {
+    question = cleanQuestion(question);
+
     var questionWords = question.split(' ');
     var found = answered.filter(function (answer) {
       return _.intersection(answer.q.split(' '), questionWords).length >= 2;
@@ -26,17 +36,19 @@ module.exports = {
     return found[0].a;
   },
 
-  learn: function (q) {
+  learn: function (question) {
 
-    if (isQuestion(q)) {
-      waitingForAnswer = q;
+    question = cleanQuestion(question);
+
+    if (isQuestion(question)) {
+      waitingForAnswer = question;
       return;
     }
 
     if (waitingForAnswer) {
       answered.push({
         q: waitingForAnswer,
-        a: q
+        a: question
       });
       reset();
     }

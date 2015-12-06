@@ -6,9 +6,8 @@ div.body#chatBody
           div(ng-bind="message.acronyms")
         .content
           h3(ng-bind="message.name")
-          span.preview(ng-bind="message.message")
+          span.preview(ng-bind-html="message.message")
           span.meta
-            //| 2h ago
 footer
 .message-input-container
 form(ng-submit='chat.sendMessage()')

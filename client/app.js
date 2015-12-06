@@ -2,6 +2,7 @@ var app = angular.module('chatty', [
   'btford.socket-io',
   'ui.router',
   'ngAnimate',
+  'ngSanitize',
   'chatty.templates'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -28,4 +29,7 @@ var app = angular.module('chatty', [
           }
         },
       });
+  })
+  .run(function ($rootScope, userService) {
+    $rootScope.userSrv = userService;
   });

@@ -1,4 +1,4 @@
-var bot = require('./bot');
+var bot = require('./bot/bot');
 
 module.exports = function (io) {
 

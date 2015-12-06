@@ -11,7 +11,7 @@ module.exports = {
       }
 
       console.log("got chuck fact: " + body);
-      
+
       deferred.resolve(JSON.parse(body).value.joke);
     });
 

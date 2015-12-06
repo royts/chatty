@@ -29,6 +29,14 @@ body, .message-input-container {
   font-size: 16px;
 }
 
+.title-header{
+  float: left;
+}
+.user-message{
+  float: right;
+  font-weight: normal;
+}
+
 .chat header:before,
 .chat header:after {
   display: block;
@@ -44,7 +52,6 @@ body, .message-input-container {
   margin: 0;
   padding: 0;
   font-size: 16px;
-  float: left;
 }
 
 .chat header h2 a {

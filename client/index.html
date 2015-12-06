@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>NodeJS Skeleton</title>
+  <link rel="shortcut icon" type="image/png" href="/chat.ico"/>
   <link href="/style.css" rel="stylesheet">
   <base href="/app/"/>
 </head>
@@ -12,16 +13,23 @@
 
     <header>
       <h2 class="title">
-        <a href='http://github.com/royts/chatty'> Chatty </a>
+        <div class="title-header">
+          <a href='http://github.com/royts/chatty'> Chatty </a>
+        </div>
+        <div class="user-message">
+            <span ng-if="userSrv.name" ng-bind="userSrv.name"></span>
+            <span ng-if="!userSrv.name">Welcome!</span>
+        </div>
       </h2>
     </header>
-      <div ui-view></div>
+    <div ui-view></div>
 
   </div>
 </div>
 
 <script src="/lib/angular/angular.js"></script>
 <script src="/lib/angular-animate/angular-animate.js"></script>
+<script src="/lib/angular-sanitize/angular-sanitize.js"></script>
 <script src="/lib/socket.io-client/socket.io.js"></script>
 <script src="/lib/angular-socket-io/socket.js"></script>
 <script src="/lib/angular-ui-router/release/angular-ui-router.js"></script>

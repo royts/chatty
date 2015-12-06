@@ -1,7 +1,8 @@
 var s = require('string'),
 chuck = require('./chuck'),
 question = require('./question'),
-Q = require('q');
+Q = require('q'),
+util = require('util');
 
 function askForChuckFact(message) {
   return s(message.toLowerCase()).contains("chuck") ||
@@ -12,6 +13,19 @@ function askForChuckFact(message) {
 function isBotQuestion(message) {
   return s(message).startsWith('bot');
 }
+
+function formatBotResponse(title, answer) {
+  util.format('<span class="answer-title">%s</span><span class="answer-body">%s</span>', title, answer);
+}
+
+function formatBotAnswer(answer) {
+  return formatBotResponse("I think I know the answer to this question:", answer);
+}
+
+function formatChuckAnswer(answer) {
+  return formatBotResponse("Here is a Chuck Norris fact:", answer);
+}
+
 
 function newMessage(msg) {
 
@@ -28,19 +42,16 @@ function newMessage(msg) {
     if (askForChuckFact(cleanQuestion)) {
 
       chuck.getFact().then(function (fact) {
-        deferred.resolve("* Chuck Norris fact * : " + fact);
+        formatChuckAnswer(fact);
       });
     } else {
 
-      var answer = question.getPreviousAnswer(cleanQuestion);
+      var answer = formatBotAnswer(question.getPreviousAnswer(cleanQuestion));
 
-      if(answer){
-        answer = "* I think I can answer that! *     " + answer;
-      }
       deferred.resolve(answer);
     }
 
-  } else{
+  } else {
     question.learn(message);
   }
 
@@ -50,4 +61,4 @@ function newMessage(msg) {
 
 module.exports = {
   newMessage: newMessage
-}
+};
