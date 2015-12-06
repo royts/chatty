@@ -10,7 +10,7 @@ module.exports = function (io) {
     io.to(socketId).emit('broadcast', {
       message: format.formatBotResponse(
         "Hi there! I'm going to be your Bot today!",
-        "You can ask me questions, or ask for Chuck Norris funny fact. Try me!"
+        "You can ask me any question or <b>Chuck Norris</b> funny fact. Try me out!"
       ),
       from: "bot"
     });
