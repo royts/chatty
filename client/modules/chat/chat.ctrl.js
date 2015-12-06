@@ -21,7 +21,7 @@ angular.module('chatty')
 
     $scope.$on(socketService.forwardedEventName, function (event, data) {
       if (!data.message) {
-        console.log('invalid message.', 'event:', event,
+        console.log('got an invalid message.', 'event:', event,
           ' , data:', JSON.stringify(data));
         return;
       }
@@ -29,7 +29,6 @@ angular.module('chatty')
       var randomId = Math.random().toString(36).slice(2);
 
       this.messages.push({
-
         acronyms: generateAcronyms(data.from),
         name: data.from,
         message: data.message,
@@ -39,7 +38,6 @@ angular.module('chatty')
       $location.hash(randomId);
       $anchorScroll();
 
-      console.log("got the message:", data.message, ", from:", data.from);
     }.bind(this));
 
 

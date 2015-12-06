@@ -27,7 +27,7 @@ var app = angular.module('chatty', [
 
             });
           }
-        },
+        }
       });
   })
   .run(function ($rootScope, userService) {

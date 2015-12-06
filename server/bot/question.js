@@ -12,10 +12,10 @@ function reset() {
   waitingForAnswer = null;
 }
 
-function cleanQuestion(question){
+function cleanQuestion(question) {
   return s(question)
-    .replaceAll("?","")
-    .replaceAll("what","")
+    .replaceAll("?", "")
+    .replaceAll("what", "")
     .replaceAll("where", "")
     .replaceAll("when", "")
     .replaceAll("how", "")
@@ -55,4 +55,4 @@ module.exports = {
     }
   },
   reset: reset
-}
+};
