@@ -23,7 +23,7 @@ body, .message-input-container {
 }
 
 .chat header {
-  background: #bd6982;
+  background: #032d43;
   padding: 15px 15px;
   color: #ffffff;
   font-size: 16px;
@@ -111,7 +111,7 @@ body, .message-input-container {
 }
 
 .chat .body ul li:hover .thumbnail {
-  background: #bd6982;
+  background: #032d43;
 }
 
 .chat .body ul li:nth-child(2n) {
@@ -225,7 +225,7 @@ body, .message-input-container {
 }
 
 .info span .fa {
-  color: #bd6982;
+  color: #032d43;
 }
 
 .info span .spoilers {
@@ -272,7 +272,7 @@ body, .message-input-container {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  background: #bd6982 none;
+  background: #032d43 none;
   border: 1px solid transparent;
   border-radius: 4px;
   margin-top: 10px;
